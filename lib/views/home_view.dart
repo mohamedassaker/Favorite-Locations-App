@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:milestone0/models/Favorite.dart';
 import 'package:milestone0/widgets/provider_widget.dart';
-import 'new_favorites/detailed_favorite_view.dart';
+import 'detailed_favorite_view.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -46,12 +46,12 @@ class _HomeViewState extends State<HomeView>{
   }
 
   Widget buildFavoriteCard(BuildContext context, DocumentSnapshot favorite){
-    var newFavorite = new Favorite(favorite['id'],
-                            favorite['locationName'],
-                            favorite['theme'],
-                            favorite['fullDesc'],
-                            favorite['imageurl'],
-                            favorite['locationurl']);
+    Favorite newFavorite = new Favorite(id: favorite['id'],
+                            locationName: favorite['locationName'],
+                            theme: favorite['theme'],
+                            fullDesc: favorite['fullDesc'],
+                            imageurl: favorite['imageurl'],
+                            locationurl: favorite['locationurl']);
     return new Container(
       child: Padding(
         padding: const EdgeInsets.all(10),

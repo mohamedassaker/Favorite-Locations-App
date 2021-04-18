@@ -7,35 +7,42 @@ import 'package:milestone0/locations.dart';
 
 class ExplorePage extends StatelessWidget {
   final List<Favorite> favoritesList = locationsAll().listobj;
+
   // final List<Favorite> favoritesList =[
-  //   Favorite(1,'Pyramids', 'Ancient Egypt', 'The Great Pyramid of Giza is the oldest and largest of the pyramids '
-  //       'in the Giza pyramid complex bordering present-day Giza in Greater Cairo, Egypt. '
-  //       'It is the oldest of the Seven Wonders of the Ancient World, and the only one to remain largely intact.',
-  //       'https://www.planetware.com/photos-large/EGY/egypt-cairo-pyramids-of-giza-and%20camels-2.jpg',
-  //       'https://goo.gl/maps/8J5rPTiq9VRpKFtz9'),
-  //   Favorite(2,'Nile', 'Egypt', 'The Nile is a major north-flowing river in northeastern Africa. '
+  //   Favorite(
+  //       id: 2,
+  //       locationName: 'Nile',
+  //       theme: 'Egypt',
+  //       fullDesc: 'The Nile is a major north-flowing river in northeastern Africa. '
   //       'The longest river in Africa, it has historically been considered the longest river in the world, '
   //       'though this has been contested by research suggesting that the Amazon River is slightly longer.',
-  //       'https://lp-cms-production.imgix.net/features/2014/07/nile-cruise-egypt-63c7bab066af.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850',
-  //       'https://goo.gl/maps/PTB3QurhtnDWvzPH6'),
-  //   Favorite(3,'Abu Simbel Temple', 'Ancient Egypt', 'The Abu Simbel temples are two massive rock-cut temples at Abu Simbel, a village in Aswan Governorate, '
-  //       'Upper Egypt, near the border with Sudan. They are situated on the western bank of Lake Nasser, about 230 km southwest of Aswan.',
-  //       'https://cdn.britannica.com/49/189749-050-EDADDEC0/Great-Temple-of-Ramses-II-temples-larger.jpg',
-  //       'https://goo.gl/maps/8T93ykzzYoDounLf6'),
-  //   Favorite(4,'Karnak Temple', 'Ancient Egypt', 'The Karnak Temple Complex, commonly known as Karnak, comprises a vast mix of decayed temples, chapels,'
+  //       imageurl: 'https://lp-cms-production.imgix.net/features/2014/07/nile-cruise-egypt-63c7bab066af.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850',
+  //       locationurl: 'https://goo.gl/maps/PTB3QurhtnDWvzPH6'),
+  //   Favorite(
+  //       id: 4,
+  //       locationName: 'Karnak Temple',
+  //       theme: 'Pharaonic',
+  //       fullDesc: 'The Karnak Temple Complex, commonly known as Karnak, comprises a vast mix of decayed temples, chapels,'
   //       ' pylons, and other buildings near Luxor, in Egypt.',
-  //       'https://lp-cms-production.imgix.net/2019-06/a19a84692952790abb5bd06a8e0d7e79-karnak.jpg',
-  //       'https://goo.gl/maps/jQKUjrsGZ2isEWhs8'),
-  //   Favorite(5,'Wadi El Hitan', 'World heritage fossil site', 'Wadi Al-Hitan is a paleontological site in the Faiyum Governorate of Egypt, some 150 kilometres south-west of '
+  //       imageurl: 'https://lp-cms-production.imgix.net/2019-06/a19a84692952790abb5bd06a8e0d7e79-karnak.jpg',
+  //       locationurl: 'https://goo.gl/maps/jQKUjrsGZ2isEWhs8'),
+  //   Favorite(
+  //       id: 5,
+  //       locationName: 'Wadi El Hitan',
+  //       theme: 'World heritage fossil site',
+  //       fullDesc: 'Wadi Al-Hitan is a paleontological site in the Faiyum Governorate of Egypt, some 150 kilometres south-west of '
   //       'Cairo. It was designated a UNESCO World Heritage Site in July 2005 for its hundreds of fossils of some of the earliest forms of whale, the archaeoceti.',
-  //       'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_whales_fossils.jpg/1200px-The_whales_fossils.jpg',
-  //       'https://goo.gl/maps/yEvBX8fLYEtQ7cnd9'),
-  //   Favorite(6,'Pyramid of Djoser', 'Ancient Egypt', 'The Pyramid of Djoser, or Step Pyramid, is an archaeological site in the Saqqara necropolis, Egypt, northwest of the '
+  //       imageurl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_whales_fossils.jpg/1200px-The_whales_fossils.jpg',
+  //       locationurl: 'https://goo.gl/maps/yEvBX8fLYEtQ7cnd9'),
+  //   Favorite(
+  //       id: 6,
+  //       locationName: 'Pyramid of Djoser',
+  //       theme: 'Pharaonic',
+  //       fullDesc: 'The Pyramid of Djoser, or Step Pyramid, is an archaeological site in the Saqqara necropolis, Egypt, northwest of the '
   //       'city of Memphis. The 6-tier, 4-sided structure is the earliest colossal stone building in Egypt. It was built in the 27th century BC during the Third '
   //       'Dynasty for the burial of Pharaoh Djoser.',
-  //       'https://www.tripsavvy.com/thmb/6TGF48NyEyn45a6cW6Lss4zknB0=/1885x1414/smart/filters:no_upscale()/GettyImages-911461570-5b76b8fb46e0fb00509c9abe.jpg',
-  //       'https://goo.gl/maps/NzmphBy87Ljqtsku5'),
-  //
+  //       imageurl: 'https://www.tripsavvy.com/thmb/6TGF48NyEyn45a6cW6Lss4zknB0=/1885x1414/smart/filters:no_upscale()/GettyImages-911461570-5b76b8fb46e0fb00509c9abe.jpg',
+  //       locationurl: 'https://goo.gl/maps/NzmphBy87Ljqtsku5'),
   // ];
   @override
   Widget build(BuildContext context) {

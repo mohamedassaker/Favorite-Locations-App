@@ -19,6 +19,7 @@ class _DetailFavoriteViewState extends State<DetailFavoriteView> {
 
 
 Widget buildFavoritePage(DocumentSnapshot favorite){
+  int _id = favorite['id'];
   String _locationName = favorite['locationName'];
   String _locationTheme = favorite['theme'];
   String _locationFullDesc = favorite['fullDesc'];

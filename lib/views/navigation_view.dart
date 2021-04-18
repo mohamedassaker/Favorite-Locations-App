@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final newFavorite = new Favorite(null,null, null, null, null, null);
+    final newFavorite = new Favorite(id: null, locationName: null, theme: null, fullDesc: null, imageurl: null, locationurl: null);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

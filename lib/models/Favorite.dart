@@ -8,14 +8,14 @@ class Favorite{
   String imageurl;
   String locationurl;
 
-  Favorite(
-      this.id,
-      this.locationName,
-      this.theme,
-      this.fullDesc,
-      this.imageurl,
-      this.locationurl
-      );
+  Favorite({
+    this.id,
+    this.locationName,
+    this.theme,
+    this.fullDesc,
+    this.imageurl,
+    this.locationurl
+  });
 
   Map<String, dynamic> toJson() => {
     'id':id,
