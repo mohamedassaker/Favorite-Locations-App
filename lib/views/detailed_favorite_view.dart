@@ -62,15 +62,16 @@ Widget buildFavoritePage(DocumentSnapshot favorite){
       title: Text('$_locationName'),
     ),
     floatingActionButton: FloatingActionButton(
-      child: Icon(Icons.map),
-      onPressed: () async {
-        String url = _locationurl;
-        if (await canLaunch(url)) {
-          await launch(url);
-        } else {
-          throw 'Could not launch $url';
-        }
-      },
+        backgroundColor: Color(0xFF153386),
+        child: Icon(Icons.map),
+        onPressed: () async {
+          String url = _locationurl;
+          if (await canLaunch(url)) {
+            await launch(url);
+          } else {
+            throw 'Could not launch $url';
+          }
+        },
     ),
     body: Container(
       child: Padding(

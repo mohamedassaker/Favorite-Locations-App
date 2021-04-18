@@ -26,7 +26,8 @@ class _HomeState extends State<Home> {
     final newFavorite = new Favorite(id: null, locationName: null, theme: null, fullDesc: null, imageurl: null, locationurl: null);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+          backgroundColor: Color(0xFF153386),
+          child: Icon(Icons.add),
           onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteLocationView(favorite: newFavorite,)),);
           }

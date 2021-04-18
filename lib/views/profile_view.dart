@@ -15,7 +15,16 @@ class ProfileView extends StatelessWidget {
                 if(snapshot.connectionState == ConnectionState.done){
                   return displayUserInformation(context, snapshot);
                 } else {
-                  return CircularProgressIndicator();
+                  return Scaffold(
+                    backgroundColor: Color(0xFF153386),
+                    body: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SpinKitCircle(color: Colors.white,),
+                        Text('Loading', style: TextStyle(color: Colors.white),),
+                      ],
+                    ),
+                  );
                 }
               },
             ),
