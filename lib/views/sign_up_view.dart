@@ -21,6 +21,7 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
+  bool showPassword = true;
   AuthFormType authFormType;
   _SignUpViewState({this.authFormType});
 
@@ -226,6 +227,14 @@ class _SignUpViewState extends State<SignUpView> {
       textFields.add(SizedBox(height: 20,));
     }
 
+    Icon passwordIcon(bool flag){
+      if(flag == true){
+        return Icon(Icons.visibility_off);
+      }else{
+        return Icon(Icons.visibility);
+      }
+    }
+
     //add email & password
     textFields.add(
       TextFormField(
@@ -242,9 +251,24 @@ class _SignUpViewState extends State<SignUpView> {
         validator: PasswordValidator.validate,
         style: TextStyle(
             fontSize: 22),
-        decoration: buildSignUpInputDecoration('Password'),
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.white,
+          focusColor: Colors.white,
+          enabledBorder: OutlineInputBorder(
+              borderSide:BorderSide(color: Colors.white, width: 0)
+          ),
+          contentPadding: const EdgeInsets.only(left: 14, bottom: 10, top: 10),
+          hintText: 'Password',
+          suffixIcon: IconButton(
+              icon: passwordIcon(showPassword),
+              onPressed: () => setState(() {
+                showPassword = !showPassword;
+              })
+          ),
+        ),
         onSaved: (value) => _password = value,
-        obscureText: true,
+        obscureText: showPassword,
       ),
     );
     textFields.add(SizedBox(height: 20,));
