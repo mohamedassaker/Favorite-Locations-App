@@ -62,6 +62,7 @@ Widget buildLocationPage(DocumentSnapshot location){
       title: Text('$_locationName'),
     ),
     floatingActionButton: FloatingActionButton(
+        tooltip: 'Show location in Google Maps',
         backgroundColor: Color(0xFF153386),
         child: Icon(Icons.map),
         onPressed: () async {

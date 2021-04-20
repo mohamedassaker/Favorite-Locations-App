@@ -75,6 +75,7 @@ class _HomeViewState extends State<HomeView>{
                 children: <Widget>[
                   IconButton(
                     icon: Icon(Icons.delete),
+                    tooltip: 'Delete location',
                     onPressed: () async {
                       final uid = await Provider.of(context).auth.getCurrentUID();
                       final doc = Firestore.instance.collection('userData').document(uid).collection('favorites').document(location.documentID);

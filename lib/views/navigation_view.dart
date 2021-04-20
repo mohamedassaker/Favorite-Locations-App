@@ -27,6 +27,7 @@ class _HomeState extends State<Home> {
     final newLocation = new Location(id: null, locationName: null, theme: null, fullDesc: null, imageurl: null, locationurl: null);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+          tooltip: 'Add new location',
           backgroundColor: Color(0xFF153386),
           child: Icon(Icons.add),
           onPressed: (){
@@ -46,6 +47,7 @@ class _HomeState extends State<Home> {
           // ),
           IconButton(
               icon: Icon(Icons.logout),
+              tooltip: 'Sign Out',
               onPressed: ()async{
                 HapticFeedback.heavyImpact();
                 try{
@@ -58,6 +60,7 @@ class _HomeState extends State<Home> {
           ),
           IconButton(
               icon: Icon(Icons.help),
+              tooltip: 'Help',
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => HelpView()));
               }

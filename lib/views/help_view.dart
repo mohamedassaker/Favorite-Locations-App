@@ -17,6 +17,7 @@ class HelpView extends StatelessWidget {
             //     }
             // ),
             IconButton(
+              tooltip: 'App Demo',
               icon: Icon(Icons.ondemand_video_outlined),
                 onPressed: ()async{
                   String url = 'https://www.drive.google.com/file/d/1mtKFYgUpg4M3Y3w14tDqqw2eOQR-i-Gi/view?usp=sharing';
