@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:milestone0/models/Favorite.dart';
+import 'package:milestone0/models/Location.dart';
 
 import 'locationurl_view.dart';
 
-class NewFavoriteImageurlView extends StatelessWidget {
+class NewLocationImageurlView extends StatelessWidget {
   final Location location;
-  NewFavoriteImageurlView({Key key, @required this.location}) : super(key: key);
+  NewLocationImageurlView({Key key, @required this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class NewFavoriteImageurlView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Favorite Image URL'),
+        title: Text('Add Location Image URL'),
         backgroundColor: Color(0xFF153386),
       ),
       body: Center(
@@ -33,7 +33,7 @@ class NewFavoriteImageurlView extends StatelessWidget {
                 child: Text('Continue'),
                 onPressed: (){
                   location.imageurl = _titleController.text;
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteLocationurlView(location: location)),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewLocationurlView(location: location)),);
                 }
             ),
           ],

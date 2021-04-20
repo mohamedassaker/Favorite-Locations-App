@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:milestone0/models/Favorite.dart';
+import 'package:milestone0/models/Location.dart';
+import 'package:milestone0/views/new_locations/theme_view.dart';
 
-import 'fullDesc_view.dart';
-
-class NewFavoriteThemeView extends StatelessWidget {
+class NewLocationView extends StatelessWidget {
   final Location location;
-  NewFavoriteThemeView({Key key, @required this.location}) : super(key: key);
+  NewLocationView({Key key, @required this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextEditingController _titleController = new TextEditingController();
-    _titleController.text = location.theme;
+    _titleController.text = location.locationName;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Favorite Theme'),
+        title: Text('Add Location Location Name'),
         backgroundColor: Color(0xFF153386),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Enter Location Theme'),
+            Text('Enter Location Name'),
             Padding(
               padding: const EdgeInsets.all(30.0),
               child: TextField(
@@ -30,11 +29,11 @@ class NewFavoriteThemeView extends StatelessWidget {
               ),
             ),
             RaisedButton(
-                child: Text('Continue'),
-                onPressed: (){
-                  location.theme = _titleController.text;
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteFullDescView(location: location)),);
-                }
+              child: Text('Continue'),
+              onPressed: (){
+                location.locationName = _titleController.text;
+                Navigator.push(context, MaterialPageRoute(builder: (context) => NewLocationThemeView(location: location)),);
+              }
             ),
           ],
         ),

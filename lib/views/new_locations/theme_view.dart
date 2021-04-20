@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:milestone0/models/Favorite.dart';
-import 'package:milestone0/views/new_favorites/theme_view.dart';
+import 'package:milestone0/models/Location.dart';
 
-class NewFavoriteLocationView extends StatelessWidget {
+import 'fullDesc_view.dart';
+
+class NewLocationThemeView extends StatelessWidget {
   final Location location;
-  NewFavoriteLocationView({Key key, @required this.location}) : super(key: key);
+  NewLocationThemeView({Key key, @required this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextEditingController _titleController = new TextEditingController();
-    _titleController.text = location.locationName;
+    _titleController.text = location.theme;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Favorite Location Name'),
+        title: Text('Add Location Theme'),
         backgroundColor: Color(0xFF153386),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Enter Location Name'),
+            Text('Enter Location Theme'),
             Padding(
               padding: const EdgeInsets.all(30.0),
               child: TextField(
@@ -29,11 +30,11 @@ class NewFavoriteLocationView extends StatelessWidget {
               ),
             ),
             RaisedButton(
-              child: Text('Continue'),
-              onPressed: (){
-                location.locationName = _titleController.text;
-                Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteThemeView(location: location)),);
-              }
+                child: Text('Continue'),
+                onPressed: (){
+                  location.theme = _titleController.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewLocationFullDescView(location: location)),);
+                }
             ),
           ],
         ),

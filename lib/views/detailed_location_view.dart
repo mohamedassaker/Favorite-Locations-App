@@ -4,12 +4,12 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:milestone0/views/sign_up_view.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class DetailFavoriteView extends StatefulWidget {
+class DetailLocationView extends StatefulWidget {
   @override
-  _DetailFavoriteViewState createState() => _DetailFavoriteViewState();
+  _DetailLocationViewState createState() => _DetailLocationViewState();
 }
 
-class _DetailFavoriteViewState extends State<DetailFavoriteView> {
+class _DetailLocationViewState extends State<DetailLocationView> {
   @override
   Widget build(BuildContext context) {
     return Container();
@@ -18,13 +18,13 @@ class _DetailFavoriteViewState extends State<DetailFavoriteView> {
 }
 
 
-Widget buildFavoritePage(DocumentSnapshot favorite){
-  int _id = favorite['id'];
-  String _locationName = favorite['locationName'];
-  String _locationTheme = favorite['theme'];
-  String _locationFullDesc = favorite['fullDesc'];
-  String _locationImageurl = favorite['imageurl'];
-  String _locationurl = favorite['locationurl'];
+Widget buildLocationPage(DocumentSnapshot location){
+  int _id = location['id'];
+  String _locationName = location['locationName'];
+  String _locationTheme = location['theme'];
+  String _locationFullDesc = location['fullDesc'];
+  String _locationImageurl = location['imageurl'];
+  String _locationurl = location['locationurl'];
 
   Widget notesCard(String txt){
     return Card(

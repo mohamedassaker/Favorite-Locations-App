@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:milestone0/models/Favorite.dart';
+import 'package:milestone0/models/Location.dart';
 import 'package:milestone0/locations.dart';
 
 class ExplorePage extends StatelessWidget {
-  final List<Location> favoritesList = locationsAll().listobj;
+  final List<Location> locationsList = locationsAll().listobj;
 
-  // final List<Favorite> favoritesList =[
-  //   Favorite(
+  // final List<Location> locationsList =[
+  //   Location(
   //       id: 2,
   //       locationName: 'Nile',
   //       theme: 'Egypt',
@@ -18,7 +18,7 @@ class ExplorePage extends StatelessWidget {
   //       'though this has been contested by research suggesting that the Amazon River is slightly longer.',
   //       imageurl: 'https://lp-cms-production.imgix.net/features/2014/07/nile-cruise-egypt-63c7bab066af.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850',
   //       locationurl: 'https://goo.gl/maps/PTB3QurhtnDWvzPH6'),
-  //   Favorite(
+  //   Location(
   //       id: 4,
   //       locationName: 'Karnak Temple',
   //       theme: 'Pharaonic',
@@ -26,7 +26,7 @@ class ExplorePage extends StatelessWidget {
   //       ' pylons, and other buildings near Luxor, in Egypt.',
   //       imageurl: 'https://lp-cms-production.imgix.net/2019-06/a19a84692952790abb5bd06a8e0d7e79-karnak.jpg',
   //       locationurl: 'https://goo.gl/maps/jQKUjrsGZ2isEWhs8'),
-  //   Favorite(
+  //   Location(
   //       id: 5,
   //       locationName: 'Wadi El Hitan',
   //       theme: 'World heritage fossil site',
@@ -34,7 +34,7 @@ class ExplorePage extends StatelessWidget {
   //       'Cairo. It was designated a UNESCO World Heritage Site in July 2005 for its hundreds of fossils of some of the earliest forms of whale, the archaeoceti.',
   //       imageurl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_whales_fossils.jpg/1200px-The_whales_fossils.jpg',
   //       locationurl: 'https://goo.gl/maps/yEvBX8fLYEtQ7cnd9'),
-  //   Favorite(
+  //   Location(
   //       id: 6,
   //       locationName: 'Pyramid of Djoser',
   //       theme: 'Pharaonic',
@@ -48,14 +48,14 @@ class ExplorePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: new ListView.builder(
-        itemCount: favoritesList.length,
-        itemBuilder: (BuildContext context, int index) => buildFavoriteCard(context, index),
+        itemCount: locationsList.length,
+        itemBuilder: (BuildContext context, int index) => buildLocationCard(context, index),
       ),
     );
   }
 
-  Widget buildFavoriteCard(BuildContext context, int index){
-    final favorite = favoritesList[index];
+  Widget buildLocationCard(BuildContext context, int index){
+    final location = locationsList[index];
     return new Container(
       child: Padding(
         padding: const EdgeInsets.all(10),
@@ -63,17 +63,17 @@ class ExplorePage extends StatelessWidget {
           children: <Widget>[
             new ListTile(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => buildFavoritePage(favorite)),);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => buildLocationPage(location)),);
               },
               leading: CircleAvatar(
                 radius: 30 ,
-                backgroundImage: NetworkImage(favorite.imageurl),
+                backgroundImage: NetworkImage(location.imageurl),
               ),
               title: Text(
-                favorite.locationName,
+                location.locationName,
                 style: new TextStyle(fontSize: 20),
               ),
-              subtitle: Text('Theme: ${favorite.theme}'),
+              subtitle: Text('Theme: ${location.theme}'),
             )
           ],
         ),
@@ -81,12 +81,12 @@ class ExplorePage extends StatelessWidget {
     );
   }
 
-  Widget buildFavoritePage(Location favorite){
-    String _locationName = favorite.locationName;
-    String _locationTheme = favorite.theme;
-    String _locationFullDesc = favorite.fullDesc;
-    String _locationImageurl = favorite.imageurl;
-    String _locationurl = favorite.locationurl;
+  Widget buildLocationPage(Location location){
+    String _locationName = location.locationName;
+    String _locationTheme = location.theme;
+    String _locationFullDesc = location.fullDesc;
+    String _locationImageurl = location.imageurl;
+    String _locationurl = location.locationurl;
 
     Widget notesCard(String txt){
       return Card(

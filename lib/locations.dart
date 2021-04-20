@@ -1,4 +1,4 @@
-import 'package:milestone0/models/Favorite.dart';
+import 'package:milestone0/models/Location.dart';
 
 class locationsAll {
   List<Location> listobj = [

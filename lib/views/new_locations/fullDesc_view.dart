@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:milestone0/models/Favorite.dart';
+import 'package:milestone0/models/Location.dart';
 
 import 'imageurl_view.dart';
 
-class NewFavoriteFullDescView extends StatelessWidget {
+class NewLocationFullDescView extends StatelessWidget {
   final Location location;
-  NewFavoriteFullDescView({Key key, @required this.location}) : super(key: key);
+  NewLocationFullDescView({Key key, @required this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class NewFavoriteFullDescView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Favorite Full Description'),
+        title: Text('Add Location Full Description'),
         backgroundColor: Color(0xFF153386),
       ),
       body: Center(
@@ -33,7 +33,7 @@ class NewFavoriteFullDescView extends StatelessWidget {
                 child: Text('Continue'),
                 onPressed: (){
                   location.fullDesc = _titleController.text;
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteImageurlView(location: location)),);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewLocationImageurlView(location: location)),);
                 }
             ),
           ],

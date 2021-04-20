@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:milestone0/models/Favorite.dart';
+import 'package:milestone0/models/Location.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:milestone0/widgets/provider_widget.dart';
 
-class NewFavoriteLocationurlView extends StatelessWidget {
+class NewLocationurlView extends StatelessWidget {
   final db = Firestore.instance;
   final Location location;
-  NewFavoriteLocationurlView({Key key, @required this.location}) : super(key: key);
+  NewLocationurlView({Key key, @required this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class NewFavoriteLocationurlView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Favorite Location URL'),
+        title: Text('Add Location Location URL'),
         backgroundColor: Color(0xFF153386),
       ),
       body: Center(

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:milestone0/services/auth_service.dart';
 import 'package:milestone0/views/explore_view.dart';
-import 'package:milestone0/views/new_favorites/location_view.dart';
-import 'package:milestone0/models/Favorite.dart';
+import 'package:milestone0/views/new_locations/location_view.dart';
+import 'package:milestone0/models/Location.dart';
 import 'package:milestone0/views/profile_view.dart';
 import 'package:milestone0/widgets/provider_widget.dart';
 import 'help_view.dart';
@@ -24,14 +24,14 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final newFavorite = new Location(id: null, locationName: null, theme: null, fullDesc: null, imageurl: null, locationurl: null);
+    final newLocation = new Location(id: null, locationName: null, theme: null, fullDesc: null, imageurl: null, locationurl: null);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
           backgroundColor: Color(0xFF153386),
           child: Icon(Icons.add),
           onPressed: (){
             HapticFeedback.heavyImpact();
-            Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteLocationView(location: newFavorite,)),);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => NewLocationView(location: newLocation,)),);
           }
       ),
       appBar: AppBar(
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
           // IconButton(
           //     icon: Icon(Icons.add),
           //     onPressed: (){
-          //       Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteLocationView(favorite: newFavorite,)),);
+          //       Navigator.push(context, MaterialPageRoute(builder: (context) => NewLocationView(location: newLocation,)),);
           //     }
           // ),
           IconButton(

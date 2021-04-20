@@ -13,7 +13,7 @@ class HelpView extends StatelessWidget {
             // IconButton(
             //     icon: Icon(Icons.add),
             //     onPressed: (){
-            //       Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteLocationView(favorite: newFavorite,)),);
+            //       Navigator.push(context, MaterialPageRoute(builder: (context) => NewLocationView(location: newLocation,)),);
             //     }
             // ),
             IconButton(

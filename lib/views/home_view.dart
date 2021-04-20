@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:milestone0/models/Favorite.dart';
+import 'package:milestone0/models/Location.dart';
 import 'package:milestone0/widgets/provider_widget.dart';
-import 'detailed_favorite_view.dart';
+import 'detailed_location_view.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _HomeViewState extends State<HomeView>{
   Widget build(BuildContext context) {
     return Container(
       child: StreamBuilder(
-        stream: getUsersFavoritesSnapshots(context),
+        stream: getUsersLocationsSnapshots(context),
         builder: (context, snapshot) {
           if(!snapshot.hasData){
             return Scaffold(
@@ -32,7 +32,7 @@ class _HomeViewState extends State<HomeView>{
           }
           return new ListView.builder(
               itemCount: snapshot.data.documents.length,
-              itemBuilder: (BuildContext context, int index) => buildFavoriteCard(context, snapshot.data.documents[index]),
+              itemBuilder: (BuildContext context, int index) => buildLocationCard(context, snapshot.data.documents[index]),
           );
         }
       ),
@@ -40,18 +40,18 @@ class _HomeViewState extends State<HomeView>{
   }
 
   TextEditingController _searchcontroller = TextEditingController();
-  Stream<QuerySnapshot> getUsersFavoritesSnapshots(BuildContext context) async*{
+  Stream<QuerySnapshot> getUsersLocationsSnapshots(BuildContext context) async*{
     final uid = await Provider.of(context).auth.getCurrentUID();
     yield* Firestore.instance.collection('userData').document(uid).collection('favorites').snapshots();
   }
 
-  Widget buildFavoriteCard(BuildContext context, DocumentSnapshot favorite){
-    Location newFavorite = new Location(id: favorite['id'],
-                            locationName: favorite['locationName'],
-                            theme: favorite['theme'],
-                            fullDesc: favorite['fullDesc'],
-                            imageurl: favorite['imageurl'],
-                            locationurl: favorite['locationurl']);
+  Widget buildLocationCard(BuildContext context, DocumentSnapshot location){
+    Location newLocation = new Location(id: location['id'],
+                            locationName: location['locationName'],
+                            theme: location['theme'],
+                            fullDesc: location['fullDesc'],
+                            imageurl: location['imageurl'],
+                            locationurl: location['locationurl']);
     return new Container(
       child: Padding(
         padding: const EdgeInsets.all(10),
@@ -59,17 +59,17 @@ class _HomeViewState extends State<HomeView>{
           children: <Widget>[
             new ListTile(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => buildFavoritePage(favorite)),);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => buildLocationPage(location)),);
               },
               leading: CircleAvatar(
                 radius: 30 ,
-                backgroundImage: NetworkImage(favorite['imageurl']),
+                backgroundImage: NetworkImage(location['imageurl']),
               ),
               title: Text(
-                favorite['locationName'],
+                location['locationName'],
                 style: new TextStyle(fontSize: 20),
               ),
-              subtitle: Text('Theme: ${favorite['theme']}'),
+              subtitle: Text('Theme: ${location['theme']}'),
               trailing: Wrap(
                 spacing: 5, // space between two icons
                 children: <Widget>[
@@ -77,7 +77,7 @@ class _HomeViewState extends State<HomeView>{
                     icon: Icon(Icons.delete),
                     onPressed: () async {
                       final uid = await Provider.of(context).auth.getCurrentUID();
-                      final doc = Firestore.instance.collection('userData').document(uid).collection('favorites').document(favorite.documentID);
+                      final doc = Firestore.instance.collection('userData').document(uid).collection('favorites').document(location.documentID);
                       return await doc.delete();
                     },
                   ),
