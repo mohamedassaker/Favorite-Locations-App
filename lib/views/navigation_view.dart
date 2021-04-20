@@ -24,14 +24,14 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final newFavorite = new Favorite(id: null, locationName: null, theme: null, fullDesc: null, imageurl: null, locationurl: null);
+    final newFavorite = new Location(id: null, locationName: null, theme: null, fullDesc: null, imageurl: null, locationurl: null);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
           backgroundColor: Color(0xFF153386),
           child: Icon(Icons.add),
           onPressed: (){
             HapticFeedback.heavyImpact();
-            Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteLocationView(favorite: newFavorite,)),);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteLocationView(location: newFavorite,)),);
           }
       ),
       appBar: AppBar(

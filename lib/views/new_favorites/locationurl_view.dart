@@ -5,13 +5,13 @@ import 'package:milestone0/widgets/provider_widget.dart';
 
 class NewFavoriteLocationurlView extends StatelessWidget {
   final db = Firestore.instance;
-  final Favorite favorite;
-  NewFavoriteLocationurlView({Key key, @required this.favorite}) : super(key: key);
+  final Location location;
+  NewFavoriteLocationurlView({Key key, @required this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextEditingController _titleController = new TextEditingController();
-    _titleController.text = favorite.locationurl;
+    _titleController.text = location.locationurl;
 
     return Scaffold(
       appBar: AppBar(
@@ -34,10 +34,10 @@ class NewFavoriteLocationurlView extends StatelessWidget {
                 child: Text('Finish'),
                 onPressed: () async {
                   //save data to firebase
-                  favorite.locationurl = _titleController.text;
+                  location.locationurl = _titleController.text;
                   final uid = await Provider.of(context).auth.getCurrentUID();
 
-                  await db.collection('userData').document(uid).collection('favorites').add(favorite.toJson());
+                  await db.collection('userData').document(uid).collection('favorites').add(location.toJson());
 
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 }

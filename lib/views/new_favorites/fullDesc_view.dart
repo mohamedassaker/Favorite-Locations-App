@@ -4,13 +4,13 @@ import 'package:milestone0/models/Favorite.dart';
 import 'imageurl_view.dart';
 
 class NewFavoriteFullDescView extends StatelessWidget {
-  final Favorite favorite;
-  NewFavoriteFullDescView({Key key, @required this.favorite}) : super(key: key);
+  final Location location;
+  NewFavoriteFullDescView({Key key, @required this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextEditingController _titleController = new TextEditingController();
-    _titleController.text = favorite.fullDesc;
+    _titleController.text = location.fullDesc;
 
     return Scaffold(
       appBar: AppBar(
@@ -32,8 +32,8 @@ class NewFavoriteFullDescView extends StatelessWidget {
             RaisedButton(
                 child: Text('Continue'),
                 onPressed: (){
-                  favorite.fullDesc = _titleController.text;
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteImageurlView(favorite: favorite)),);
+                  location.fullDesc = _titleController.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteImageurlView(location: location)),);
                 }
             ),
           ],

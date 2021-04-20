@@ -6,7 +6,7 @@ import 'package:milestone0/models/Favorite.dart';
 import 'package:milestone0/locations.dart';
 
 class ExplorePage extends StatelessWidget {
-  final List<Favorite> favoritesList = locationsAll().listobj;
+  final List<Location> favoritesList = locationsAll().listobj;
 
   // final List<Favorite> favoritesList =[
   //   Favorite(
@@ -81,7 +81,7 @@ class ExplorePage extends StatelessWidget {
     );
   }
 
-  Widget buildFavoritePage(Favorite favorite){
+  Widget buildFavoritePage(Location favorite){
     String _locationName = favorite.locationName;
     String _locationTheme = favorite.theme;
     String _locationFullDesc = favorite.fullDesc;

@@ -4,13 +4,13 @@ import 'package:milestone0/models/Favorite.dart';
 import 'fullDesc_view.dart';
 
 class NewFavoriteThemeView extends StatelessWidget {
-  final Favorite favorite;
-  NewFavoriteThemeView({Key key, @required this.favorite}) : super(key: key);
+  final Location location;
+  NewFavoriteThemeView({Key key, @required this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextEditingController _titleController = new TextEditingController();
-    _titleController.text = favorite.theme;
+    _titleController.text = location.theme;
 
     return Scaffold(
       appBar: AppBar(
@@ -32,8 +32,8 @@ class NewFavoriteThemeView extends StatelessWidget {
             RaisedButton(
                 child: Text('Continue'),
                 onPressed: (){
-                  favorite.theme = _titleController.text;
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteFullDescView(favorite: favorite)),);
+                  location.theme = _titleController.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteFullDescView(location: location)),);
                 }
             ),
           ],

@@ -4,13 +4,13 @@ import 'package:milestone0/models/Favorite.dart';
 import 'locationurl_view.dart';
 
 class NewFavoriteImageurlView extends StatelessWidget {
-  final Favorite favorite;
-  NewFavoriteImageurlView({Key key, @required this.favorite}) : super(key: key);
+  final Location location;
+  NewFavoriteImageurlView({Key key, @required this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextEditingController _titleController = new TextEditingController();
-    _titleController.text = favorite.imageurl;
+    _titleController.text = location.imageurl;
 
     return Scaffold(
       appBar: AppBar(
@@ -32,8 +32,8 @@ class NewFavoriteImageurlView extends StatelessWidget {
             RaisedButton(
                 child: Text('Continue'),
                 onPressed: (){
-                  favorite.imageurl = _titleController.text;
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteLocationurlView(favorite: favorite)),);
+                  location.imageurl = _titleController.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteLocationurlView(location: location)),);
                 }
             ),
           ],

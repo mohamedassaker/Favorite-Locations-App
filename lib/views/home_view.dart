@@ -46,7 +46,7 @@ class _HomeViewState extends State<HomeView>{
   }
 
   Widget buildFavoriteCard(BuildContext context, DocumentSnapshot favorite){
-    Favorite newFavorite = new Favorite(id: favorite['id'],
+    Location newFavorite = new Location(id: favorite['id'],
                             locationName: favorite['locationName'],
                             theme: favorite['theme'],
                             fullDesc: favorite['fullDesc'],

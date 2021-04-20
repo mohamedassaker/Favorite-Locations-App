@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Favorite{
+class Location{
   int id;
   String locationName;
   String theme;
@@ -8,7 +8,7 @@ class Favorite{
   String imageurl;
   String locationurl;
 
-  Favorite({
+  Location({
     this.id,
     this.locationName,
     this.theme,
@@ -26,7 +26,7 @@ class Favorite{
     'locationurl': locationurl,
   };
 
-  Favorite.fromSnapshot(DocumentSnapshot snapshot) :
+  Location.fromSnapshot(DocumentSnapshot snapshot) :
       id = snapshot['id'],
       locationName = snapshot['locationName'],
       theme = snapshot['theme'],
