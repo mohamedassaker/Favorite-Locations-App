@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../models/Favorite.dart';
+import 'package:milestone0/models/Favorite.dart';
 import 'package:milestone0/locations.dart';
 
 class ExplorePage extends StatelessWidget {

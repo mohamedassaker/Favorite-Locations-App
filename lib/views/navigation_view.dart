@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:milestone0/services/auth_service.dart';
 import 'package:milestone0/views/explore_view.dart';
 import 'package:milestone0/views/new_favorites/location_view.dart';
 import 'package:milestone0/models/Favorite.dart';
-import 'file:///D:/Apps/AndroidStudioProjects/milestone0/lib/views/profile_view.dart';
+import 'package:milestone0/views/profile_view.dart';
 import 'package:milestone0/widgets/provider_widget.dart';
 import 'help_view.dart';
 import 'home_view.dart';
@@ -29,6 +30,7 @@ class _HomeState extends State<Home> {
           backgroundColor: Color(0xFF153386),
           child: Icon(Icons.add),
           onPressed: (){
+            HapticFeedback.heavyImpact();
             Navigator.push(context, MaterialPageRoute(builder: (context) => NewFavoriteLocationView(favorite: newFavorite,)),);
           }
       ),
@@ -45,6 +47,7 @@ class _HomeState extends State<Home> {
           IconButton(
               icon: Icon(Icons.logout),
               onPressed: ()async{
+                HapticFeedback.heavyImpact();
                 try{
                   AuthService auth = Provider.of(context).auth;
                   await auth.signOut();
