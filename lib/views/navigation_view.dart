@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
               }
           ),
           IconButton(
-              icon: Icon(Icons.help),
+              icon: Icon(Icons.help_outline),
               tooltip: 'Help',
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => HelpView()));
@@ -73,15 +73,21 @@ class _HomeState extends State<Home> {
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
-            icon: new Icon(Icons.home),
+            tooltip: "User's Locations",
+            icon: new Icon(Icons.home_outlined),
+            activeIcon: new Icon(Icons.home),
             title: new Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.explore),
+            tooltip: 'Suggested Locations',
+            icon: new Icon(Icons.explore_outlined),
+            activeIcon: new Icon(Icons.explore),
             title: new Text('Explore'),
           ),
            BottomNavigationBarItem(
-             icon: new Icon(Icons.account_circle),
+             tooltip: "User's Profile",
+             icon: new Icon(Icons.account_circle_outlined),
+             activeIcon: new Icon(Icons.account_circle),
              title: new Text('Profile'),
           ),
         ],

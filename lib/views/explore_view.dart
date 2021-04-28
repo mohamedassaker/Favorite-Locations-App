@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:milestone0/models/Location.dart';
 import 'package:milestone0/locations.dart';
@@ -109,14 +108,6 @@ class ExplorePage extends StatelessWidget {
       );
     }
 
-    Future<void> _onOpen(LinkableElement link) async {
-      if (await canLaunch(link.url)) {
-        await launch(link.url);
-      } else {
-        throw 'Could not launch $link';
-      }
-    }
-
     return new Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -124,6 +115,7 @@ class ExplorePage extends StatelessWidget {
         title: Text('$_locationName'),
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: 'Show location in Google Maps',
         child: Icon(Icons.map),
         onPressed: () async {
           String url = _locationurl;

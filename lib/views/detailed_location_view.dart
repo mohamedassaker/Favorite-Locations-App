@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:milestone0/views/sign_up_view.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailLocationView extends StatefulWidget {
@@ -47,14 +45,6 @@ Widget buildLocationPage(DocumentSnapshot location){
     );
   }
 
-  Future<void> _onOpen(LinkableElement link) async {
-    if (await canLaunch(link.url)) {
-      await launch(link.url);
-    } else {
-      throw 'Could not launch $link';
-    }
-  }
-
   return new Scaffold(
     backgroundColor: Colors.white,
     appBar: AppBar(
@@ -63,7 +53,7 @@ Widget buildLocationPage(DocumentSnapshot location){
     ),
     floatingActionButton: FloatingActionButton(
         tooltip: 'Show location in Google Maps',
-        backgroundColor: Color(0xFF153386),
+        // backgroundColor: Color(0xFF153386),
         child: Icon(Icons.map),
         onPressed: () async {
           String url = _locationurl;

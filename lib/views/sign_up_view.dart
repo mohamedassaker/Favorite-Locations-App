@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/button_list.dart';
-import 'package:flutter_signin_button/button_view.dart';
 import 'package:milestone0/services/auth_service.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:milestone0/widgets/provider_widget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 
 final primaryColor = const Color(0xFF153386);
 
