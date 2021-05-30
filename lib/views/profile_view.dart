@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:milestone0/widgets/provider_widget.dart';
+import 'package:intl/intl.dart';
 
 class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
+        width: MediaQuery.of(context).size.width,
         child: Column(
           children: <Widget>[
             FutureBuilder(
@@ -38,6 +39,10 @@ class ProfileView extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text('Email: ${user.email ?? 'Anonymous'}', style: TextStyle(fontSize: 25,)),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Created: ${DateFormat('dd/MM/yyyy').format(user.metadata.creationTime)}', style: TextStyle(fontSize: 25,)),
+          ),
           showSignOut(context, user.isAnonymous),
         ],
       ),
@@ -46,7 +51,7 @@ class ProfileView extends StatelessWidget {
 
   Widget showSignOut(context, bool isAnonymous){
     if(isAnonymous == true){
-      return RaisedButton(
+      return ElevatedButton(
         child: Text('Sign in to save your data'),
           onPressed: (){
             Navigator.of(context).pushNamed('/convertUser');
@@ -55,5 +60,4 @@ class ProfileView extends StatelessWidget {
     }
     return Container(width: 0, height: 0,);
   }
-
 }

@@ -86,7 +86,7 @@ class _HomeViewState extends State<HomeView>{
               children: <Widget>[
                 new ListTile(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => buildLocationPage(location)),);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailLocationView(location: newLocation)),);
                   },
                   leading: CircleAvatar(
                     radius: 30 ,
@@ -101,7 +101,7 @@ class _HomeViewState extends State<HomeView>{
                     spacing: 5, // space between two icons
                     children: <Widget>[
                       IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: Icon(Icons.delete,color: Colors.red,),
                         tooltip: 'Delete location',
                         onPressed: () async {
                           final uid = await Provider.of(context).auth.getCurrentUID();

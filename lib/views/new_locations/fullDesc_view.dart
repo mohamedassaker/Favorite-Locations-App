@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:milestone0/models/Location.dart';
-
 import 'imageurl_view.dart';
 
 class NewLocationFullDescView extends StatelessWidget {
@@ -29,7 +28,7 @@ class NewLocationFullDescView extends StatelessWidget {
                 autofocus: true,
               ),
             ),
-            RaisedButton(
+            ElevatedButton(
                 child: Text('Continue'),
                 onPressed: (){
                   location.fullDesc = _titleController.text;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:milestone0/models/Location.dart';
-
 import 'locationurl_view.dart';
 
 class NewLocationImageurlView extends StatelessWidget {
@@ -29,7 +28,7 @@ class NewLocationImageurlView extends StatelessWidget {
                 autofocus: true,
               ),
             ),
-            RaisedButton(
+            ElevatedButton(
                 child: Text('Continue'),
                 onPressed: (){
                   location.imageurl = _titleController.text;

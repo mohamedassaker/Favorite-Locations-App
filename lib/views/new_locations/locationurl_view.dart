@@ -30,7 +30,7 @@ class NewLocationurlView extends StatelessWidget {
                 autofocus: true,
               ),
             ),
-            RaisedButton(
+            ElevatedButton(
                 child: Text('Finish'),
                 onPressed: () async {
                   //save data to firebase

@@ -28,7 +28,7 @@ class NewLocationView extends StatelessWidget {
                 autofocus: true,
               ),
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Continue'),
               onPressed: (){
                 location.locationName = _titleController.text;

@@ -39,12 +39,6 @@ class _HomeState extends State<Home> {
         title: Text('Favorite Location App',),
         backgroundColor: Color(0xFF153386),
         actions: <Widget>[
-          // IconButton(
-          //     icon: Icon(Icons.add),
-          //     onPressed: (){
-          //       Navigator.push(context, MaterialPageRoute(builder: (context) => NewLocationView(location: newLocation,)),);
-          //     }
-          // ),
           IconButton(
               icon: Icon(Icons.logout),
               tooltip: 'Sign Out',
@@ -59,7 +53,7 @@ class _HomeState extends State<Home> {
               }
           ),
           IconButton(
-              icon: Icon(Icons.help_outline),
+              icon: Icon(Icons.help_outline,color: Colors.blue,),
               tooltip: 'Help',
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => HelpView()));
@@ -75,20 +69,20 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             tooltip: "User's Locations",
             icon: new Icon(Icons.home_outlined),
-            activeIcon: new Icon(Icons.home),
-            title: new Text('Home'),
+            activeIcon: new Icon(Icons.home,color: Color(0xFF153386),),
+            title: new Text('Home',style: TextStyle(color: Color(0xFF153386))),
           ),
           BottomNavigationBarItem(
             tooltip: 'Suggested Locations',
             icon: new Icon(Icons.explore_outlined),
-            activeIcon: new Icon(Icons.explore),
-            title: new Text('Explore'),
+            activeIcon: new Icon(Icons.explore,color: Color(0xFF153386)),
+            title: new Text('Explore',style: TextStyle(color: Color(0xFF153386))),
           ),
            BottomNavigationBarItem(
              tooltip: "User's Profile",
              icon: new Icon(Icons.account_circle_outlined),
-             activeIcon: new Icon(Icons.account_circle),
-             title: new Text('Profile'),
+             activeIcon: new Icon(Icons.account_circle,color: Color(0xFF153386)),
+             title: new Text('Profile',style: TextStyle(color: Color(0xFF153386))),
           ),
         ],
       ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:milestone0/models/Location.dart';
-
 import 'fullDesc_view.dart';
 
 class NewLocationThemeView extends StatelessWidget {
@@ -29,7 +28,7 @@ class NewLocationThemeView extends StatelessWidget {
                 autofocus: true,
               ),
             ),
-            RaisedButton(
+            ElevatedButton(
                 child: Text('Continue'),
                 onPressed: (){
                   location.theme = _titleController.text;

@@ -3,10 +3,11 @@ import 'package:milestone0/services/auth_service.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:milestone0/widgets/provider_widget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 
 final primaryColor = const Color(0xFF153386);
 
-enum AuthFormType{signIn, signUp, reset, anonymous,convert}
+enum AuthFormType{signIn, signUp, reset, anonymous, convert}
 
 class SignUpView extends StatefulWidget {
   final AuthFormType authFormType;
@@ -19,12 +20,13 @@ class SignUpView extends StatefulWidget {
 
 class _SignUpViewState extends State<SignUpView> {
   bool showPassword = true;
+  bool showConfirmPassword = true;
   AuthFormType authFormType;
   _SignUpViewState({this.authFormType});
 
   final AuthService _auth = AuthService();
   final formKey = GlobalKey<FormState>();
-  String _email, _password, _name, _warning;
+  String _email, _password, _name, _warning, _confirmPassword;
 
   void switchFormState(String state){
     formKey.currentState.reset();
@@ -66,7 +68,7 @@ class _SignUpViewState extends State<SignUpView> {
             Navigator.of(context).pushReplacementNamed('/home');
             break;
           case AuthFormType.signUp:
-            String uid = await auth.createUserWithEmailAndPassword(_email, _password, _name);
+            String uid = await auth.createUserWithEmailAndPassword(_email, _password, _name, _confirmPassword);
             Navigator.of(context).pushReplacementNamed('/home');
             break;
           case AuthFormType.reset:
@@ -81,8 +83,8 @@ class _SignUpViewState extends State<SignUpView> {
             Navigator.of(context).pushReplacementNamed('/home');
             break;
           case AuthFormType.convert:
-            await auth.convertUserWithEmail(_email, _password, _name);
-            Navigator.of(context).pushReplacementNamed('/home');
+            await auth.convertUserWithEmail(_email, _password, _name,_confirmPassword);
+            Navigator.of(context).pop();
             break;
         }
       }catch (e) {
@@ -103,6 +105,7 @@ class _SignUpViewState extends State<SignUpView> {
     if(authFormType == AuthFormType.anonymous){
       submit();
       return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: primaryColor,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -115,6 +118,7 @@ class _SignUpViewState extends State<SignUpView> {
       );
     }else {
       return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
           color: primaryColor,
           height: _height,
@@ -196,6 +200,7 @@ class _SignUpViewState extends State<SignUpView> {
   }
 
   List<Widget> buildInputs(){
+
     List<Widget> textFields = [];
 
     if (authFormType == AuthFormType.reset){
@@ -270,6 +275,41 @@ class _SignUpViewState extends State<SignUpView> {
     );
     textFields.add(SizedBox(height: 20,));
 
+    if([AuthFormType.signUp, AuthFormType.convert].contains(authFormType)){
+      textFields.add(
+        TextFormField(
+          validator: (val){
+            if(val.isEmpty)
+              return 'PLease renter the password';
+            if(val != _password)
+              return 'Not Match';
+            return null;
+          },
+          style: TextStyle(
+              fontSize: 22),
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
+            focusColor: Colors.white,
+            enabledBorder: OutlineInputBorder(
+                borderSide:BorderSide(color: Colors.white, width: 0)
+            ),
+            contentPadding: const EdgeInsets.only(left: 14, bottom: 10, top: 10),
+            hintText: 'Confirm Password',
+            suffixIcon: IconButton(
+                icon: passwordIcon(showConfirmPassword),
+                onPressed: () => setState(() {
+                  showConfirmPassword = !showConfirmPassword;
+                })
+            ),
+          ),
+          onSaved: (value) => _confirmPassword = value,
+          obscureText: showConfirmPassword,
+        ),
+      );
+      textFields.add(SizedBox(height: 20,));
+    }
+
     return textFields;
   }
 
@@ -327,7 +367,7 @@ class _SignUpViewState extends State<SignUpView> {
         ),
       ),
       showForgotPassword(_showForgotPassword),
-      FlatButton(
+      TextButton(
         child: Text(_switchButtonText, style: TextStyle(color: Colors.white),),
         onPressed: (){
           switchFormState(_newFormState);
@@ -339,7 +379,7 @@ class _SignUpViewState extends State<SignUpView> {
 
   Widget showForgotPassword(bool visible){
     return Visibility(
-      child: FlatButton(
+      child: TextButton(
           child: Text(
             'Forgot Password',
             style: TextStyle(color: Colors.white),
@@ -359,21 +399,25 @@ class _SignUpViewState extends State<SignUpView> {
     return Visibility(
       child: Column(
         children: <Widget>[
-          // Divider(color: Colors.white,),
-          // SizedBox(height: 10),
-          // SignInButton(
-          //   Buttons.Google,
-          //   onPressed: () async {
-          //     try{
-          //       await _auth.signInWithGoogle();
-          //       Navigator.of(context).pushReplacementNamed('/home');
-          //     }catch (e){
-          //       setState(() {
-          //         _warning = e.message;
-          //       });
-          //     }
-          //   },
-          // ),
+          Divider(color: Colors.white,),
+          SizedBox(height: 10),
+          GoogleSignInButton(
+            onPressed: () async {
+              try{
+                if(authFormType == AuthFormType.convert){
+                  await _auth.convertWithGoogle();
+                  Navigator.of(context).pop();
+                }else{
+                  await _auth.signInWithGoogle();
+                  Navigator.of(context).pushReplacementNamed('/home');
+                }
+              }catch (e){
+                setState(() {
+                  _warning = e.message;
+                });
+              }
+            },
+          ),
         ],
       ),
       visible: visible,

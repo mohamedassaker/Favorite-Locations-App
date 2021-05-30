@@ -11,6 +11,7 @@ class FirstView extends StatelessWidget {
     final _height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: _width,
         height: _height,
@@ -65,7 +66,7 @@ class FirstView extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: _height*0.05,),
-                  FlatButton(
+                  TextButton(
                     child: Text(
                       'Sign In',
                       style: TextStyle(color: Colors.white, fontSize: 25),

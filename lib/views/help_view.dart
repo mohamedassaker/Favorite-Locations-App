@@ -10,12 +10,6 @@ class HelpView extends StatelessWidget {
         title: Text('Help'),
         backgroundColor: Color(0xFF153386),
           actions: <Widget>[
-            // IconButton(
-            //     icon: Icon(Icons.add),
-            //     onPressed: (){
-            //       Navigator.push(context, MaterialPageRoute(builder: (context) => NewLocationView(location: newLocation,)),);
-            //     }
-            // ),
             IconButton(
               tooltip: 'App Demo',
               icon: Icon(Icons.ondemand_video_outlined),
